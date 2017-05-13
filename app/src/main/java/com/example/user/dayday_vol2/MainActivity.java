@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
         //asdasdsad
         //asdasdsadsadasdsad
         //왜안되 씨멍ㄹ3633
-        //ㅑㅡㅑㅡㅑㅡㅑㅡ
+        //ㅑㅡㅑㅡㅑㅡ
         //ㅋㅋㅋ 맨붕온당
     }
 }
