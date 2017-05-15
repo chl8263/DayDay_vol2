@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private void setDrawerLayout(){
         drawerLayout = (DrawerLayout)findViewById(R.id.drawlayoutNavigation);
         drawItems = new ArrayList<DrawItem>();
+        //asdasdsa
         drawItems.add(new DrawItem(R.drawable.indraw_home,"홈"));
         drawItems.add(new DrawItem(R.drawable.indraw_cal,"캘린더"));
         drawItems.add(new DrawItem(R.drawable.indraw_album,"앨범"));
