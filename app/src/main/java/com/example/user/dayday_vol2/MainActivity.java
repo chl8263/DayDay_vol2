@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         drawItems.add(new DrawItem(R.drawable.indraw_album, "앨범"));
         drawItems.add(new DrawItem(R.drawable.indraw_set, "설정"));
         drawItems.add(new DrawItem(R.drawable.indraw_sign, "서명"));
-        drawAdapter = new DrawAdapter(this, R.layout.drawlistitem, drawItems);
+        drawAdapter = new DrawAdapter(this, R.layout.draw_list_item, drawItems);
         DrawlistView = (ListView) findViewById(R.id.menu_list);
         DrawlistView.setAdapter(drawAdapter);
         DrawlistView.setDividerHeight(5);
