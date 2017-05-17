@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private void setDrawerLayout(){
         drawerLayout = (DrawerLayout)findViewById(R.id.drawlayoutNavigation);
         drawItems = new ArrayList<DrawItem>();
-        //asdasdsa
+        drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
         drawItems.add(new DrawItem(R.drawable.indraw_home,"홈"));
         drawItems.add(new DrawItem(R.drawable.indraw_cal,"캘린더"));
         drawItems.add(new DrawItem(R.drawable.indraw_album,"앨범"));
@@ -33,6 +33,5 @@ public class MainActivity extends AppCompatActivity {
         DrawlistView = (ListView)findViewById(R.id.menu_list);
         DrawlistView.setAdapter(drawAdapter);
         DrawlistView.setDividerHeight(5);
-
     }
 }
