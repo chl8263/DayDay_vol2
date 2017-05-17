@@ -49,6 +49,5 @@ public class DrawAdapter extends BaseAdapter {
         TextView name = (TextView)convertView.findViewById(R.id.drawListText);
         name.setText(drawItems.get(position).getName());
         return convertView;
-
     }
 }
