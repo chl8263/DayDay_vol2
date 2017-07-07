@@ -76,11 +76,7 @@
             android:background="#e9e7e7"
             android:id="@+id/fragament"
             >
-            <fragment
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:name="com.example.user.dayday_vol2.ListFragment"
-                />
+
         </LinearLayout>
 
         <LinearLayout
