@@ -1,22 +1,26 @@
-package com.example.user.dayday_vol2;
+package com.example.user.dayday_vol2.DrawLay;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.example.user.dayday_vol2.R;
 
 import java.util.ArrayList;
 
 /**
- * Created by 115-03 on 2017-05-17.
+ * Created by User on 2017-05-14.
  */
 
-public class ListAdapter extends BaseAdapter {
+public class DrawAdapter extends BaseAdapter {
     private Context context;
     private int res;
     private ArrayList<DrawItem> drawItems;
-    public ListAdapter (Context context,int res,ArrayList<DrawItem>items){
+    public DrawAdapter (Context context,int res,ArrayList<DrawItem>items){
         this.context = context;
         this.res = res;
         this.drawItems = items;
@@ -42,7 +46,12 @@ public class ListAdapter extends BaseAdapter {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(res,parent,false);
         }
-
+        ImageView icon = (ImageView)convertView.findViewById(R.id.drawListImg);
+        icon.setImageResource(drawItems.get(position).getImg());
+        TextView name = (TextView)convertView.findViewById(R.id.drawListText);
+        name.setText(drawItems.get(position).getName());
         return convertView;
     }
+
+
 }

@@ -1,13 +1,18 @@
 package com.example.user.dayday_vol2;
 
+import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+
+import com.example.user.dayday_vol2.DrawLay.DrawAdapter;
+import com.example.user.dayday_vol2.DrawLay.DrawItem;
 
 import java.util.ArrayList;
 
@@ -17,14 +22,54 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<DrawItem> drawItems;
     private ListView DrawlistView;
     private ImageView DrawButton;
-
+    private LinearLayout listBtn;
+    private LinearLayout gridBtn;
+    private LinearLayout fragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        setListGridBtn();
         setDrawerLayout();
         setDrawerLayoutButton();
+
+    }
+    private void setListGridBtn(){
+        fragment = (LinearLayout)findViewById(R.id.fragament);
+        listBtn = (LinearLayout)findViewById(R.id.ListViewBtn);
+        gridBtn = (LinearLayout)findViewById(R.id.GridViewBtn);
+        listBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switchFragment(0);
+                Log.e("asd","asd");
+            }
+        });
+        gridBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switchFragment(1);
+                Log.e("aaaa","aaaa");
+            }
+        });
+    }
+    private void switchFragment(int i){
+        android.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        switch (i){
+            case 0:
+                Log.e("switch0","aaaa");
+                ListFragment Listfragment = new ListFragment();
+                transaction.replace(R.id.fragament,Listfragment);
+                transaction.commit();
+                break;
+            case 1:
+                Log.e("switch1","aaaa");
+                GridFragment Gridfragment = new GridFragment();
+                transaction.replace(R.id.fragament,Gridfragment);
+                transaction.commit();
+                break;
+        }
 
     }
 

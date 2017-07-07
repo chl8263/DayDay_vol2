@@ -1,21 +1,23 @@
-package com.example.user.dayday_vol2;
+package com.example.user.dayday_vol2.DrawLay;
 
 /**
- * Created by User on 2017-05-14.
+ * Created by User on 2017-07-07.
  */
 
 public class DrawItem {
     private int res;
     private String name;
 
-    public  DrawItem(int res,String name){
+    public DrawItem(int res, String name) {
         this.res = res;
         this.name = name;
     }
-    public int getImg(){
+
+    public int getImg() {
         return res;
     }
-    public String getName(){
+
+    public String getName() {
         return name;
     }
 }
