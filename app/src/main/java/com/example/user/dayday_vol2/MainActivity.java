@@ -1,15 +1,19 @@
 package com.example.user.dayday_vol2;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.user.dayday_vol2.DrawLay.DrawAdapter;
 import com.example.user.dayday_vol2.DrawLay.DrawItem;
@@ -18,6 +22,7 @@ import com.example.user.dayday_vol2.Recycle_LIst.ListFragment;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+    private TextView now_month;
     private DrawerLayout drawerLayout;
     private DrawAdapter drawAdapter;
     private ArrayList<DrawItem> drawItems;
@@ -26,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     private LinearLayout listBtn;
     private LinearLayout gridBtn;
     private LinearLayout fragment;
+    private LinearLayout write;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +40,29 @@ public class MainActivity extends AppCompatActivity {
         setListGridBtn();
         setDrawerLayout();
         setDrawerLayoutButton();
-
+        Now_month();
+        Write();
+    }
+    private void Write(){
+        write=(LinearLayout)findViewById(R.id.write);
+        write.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.e("asd","asdasd");
+                Intent intent = new Intent(getApplicationContext(),Write.class);
+                startActivity(intent);
+            }
+        });
+    }
+    private void Now_month(){
+        now_month = (TextView)findViewById(R.id.now_month);
+        now_month.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Animation animation = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.btn_anim);
+                now_month.startAnimation(animation);
+            }
+        });
     }
     private void setListGridBtn(){
         fragment = (LinearLayout)findViewById(R.id.fragament);
@@ -59,21 +87,17 @@ public class MainActivity extends AppCompatActivity {
         android.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
         switch (i){
             case 0:
-                Log.e("switch0","aaaa");
                 ListFragment Listfragment = new ListFragment();
                 transaction.replace(R.id.fragament,Listfragment);
                 transaction.commit();
                 break;
             case 1:
-                Log.e("switch1","aaaa");
                 GridFragment Gridfragment = new GridFragment();
                 transaction.replace(R.id.fragament,Gridfragment);
                 transaction.commit();
                 break;
         }
-
     }
-
     @Override
     public void onBackPressed() {
         if (drawerLayout.isDrawerOpen(Gravity.START))
@@ -81,7 +105,6 @@ public class MainActivity extends AppCompatActivity {
         else
             super.onBackPressed();
     }
-
     private void setDrawerLayoutButton() {
         DrawButton = (ImageView) findViewById(R.id.drawlayoutMenu);
         DrawButton.setOnClickListener(new View.OnClickListener() {
@@ -90,9 +113,7 @@ public class MainActivity extends AppCompatActivity {
                 drawerLayout.openDrawer(DrawlistView);
             }
         });
-
     }
-
     private void setDrawerLayout() {
         drawerLayout = (DrawerLayout) findViewById(R.id.drawlayoutNavigation);
         drawItems = new ArrayList<DrawItem>();

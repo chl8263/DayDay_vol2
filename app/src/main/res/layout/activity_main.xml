@@ -22,20 +22,26 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="8dp"
-                android:layout_weight="3"
+                android:layout_weight="4"
                 android:src="@drawable/drawlaymenu" />
 
             <TextView
                 android:gravity="center"
                 android:text="데이데이"
+                android:layout_weight="4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+            <TextView
                 android:layout_weight="3"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 />
             <TextView
+                android:id="@+id/now_month"
                 android:text="현재월로 이동"
                 android:gravity="right|center"
-                android:layout_weight="1"
+                android:layout_weight="3"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 />
@@ -130,6 +136,7 @@
                     />
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/write"
                 android:orientation="vertical"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
