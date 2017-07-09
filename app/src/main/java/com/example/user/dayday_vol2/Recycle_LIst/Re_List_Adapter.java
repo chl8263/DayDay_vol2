@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.user.dayday_vol2.R;
@@ -19,21 +20,28 @@ public class Re_List_Adapter extends RecyclerView.Adapter<Re_List_Adapter.ViewHo
     private Context context;
     private ArrayList<Re_List_item> list;
     private ViewHolder holder;
-    public Re_List_Adapter(Context context,ArrayList<Re_List_item> list){
+
+    public Re_List_Adapter(Context context, ArrayList<Re_List_item> list) {
         this.context = context;
-        this.list=list;
+        this.list = list;
     }
+
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycle_list_item,parent,false);
-        holder=new ViewHolder(v);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycle_list_item, parent, false);
+        holder = new ViewHolder(v);
         return holder;
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.name1.setText(list.get(position).name1());
-        holder.name2.setText(list.get(position).name2());
+        holder.date.setText(list.get(position).getDate());
+        holder.day.setText(list.get(position).getDay());
+        holder.time.setText(list.get(position).getTime());
+        holder.title.setText(list.get(position).getTitle());
+        holder.content.setText(list.get(position).getContent());
+        holder.image.setImageResource(list.get(position).getImage());
+
     }
 
     @Override
@@ -41,13 +49,22 @@ public class Re_List_Adapter extends RecyclerView.Adapter<Re_List_Adapter.ViewHo
         return list.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
-        public TextView name1;
-        public TextView name2;
+    public class ViewHolder extends RecyclerView.ViewHolder {
+        public TextView date;
+        public TextView day;
+        public TextView time;
+        public TextView title;
+        public TextView content;
+        public ImageView image;
+
         public ViewHolder(View itemView) {
             super(itemView);
-            name1=(TextView)itemView.findViewById(R.id.name1);
-            name2=(TextView)itemView.findViewById(R.id.name2);
+            date = (TextView) itemView.findViewById(R.id.date);
+            day = (TextView) itemView.findViewById(R.id.day);
+            time = (TextView) itemView.findViewById(R.id.time);
+            title = (TextView) itemView.findViewById(R.id.title);
+            content = (TextView) itemView.findViewById(R.id.content);
+            image = (ImageView) itemView.findViewById(R.id.list_image);
         }
     }
 }

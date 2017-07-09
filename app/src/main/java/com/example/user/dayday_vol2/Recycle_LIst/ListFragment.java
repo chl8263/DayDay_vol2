@@ -18,33 +18,39 @@ import java.util.ArrayList;
  * Created by User on 2017-07-07.
  */
 
-public class ListFragment extends Fragment{
+public class ListFragment extends Fragment {
     private RecyclerView recyclerView;
     private ArrayList<Re_List_item> items;
     private Re_List_Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
+    private View view;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        items = new ArrayList<Re_List_item>();
+        items.add(new Re_List_item("a", "a","a","a","a",R.drawable.aaa));
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.list_fragment,container,false);
+        view = inflater.inflate(R.layout.list_fragment, container, false);
+
+        recyclerView = (RecyclerView) view.findViewById(R.id.recycle);
+        recyclerView.setHasFixedSize(true);
+        layoutManager = new LinearLayoutManager(view.getContext());
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.scrollToPosition(0);
+        adapter = new Re_List_Adapter(view.getContext(), items);
+        recyclerView.setAdapter(adapter);
+
+        return view;
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        items=new ArrayList<Re_List_item>();
-        recyclerView=(RecyclerView)getView().findViewById(R.id.recycle);
-        recyclerView.setHasFixedSize(true);
 
-        items.add(new Re_List_item("a","a"));
-        items.add(new Re_List_item("s","s"));
-        items.add(new Re_List_item("d","d"));
-        items.add(new Re_List_item("f","f"));
-
-        layoutManager = new LinearLayoutManager(getActivity());
-
-        recyclerView.setLayoutManager(layoutManager);
-        adapter = new Re_List_Adapter(getActivity(),items);
-        recyclerView.setAdapter(adapter);
     }
 }
