@@ -4,17 +4,86 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#ffffff"
+
     >
 
     <LinearLayout
+        android:background="#00ff95"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="4"></LinearLayout>
+        android:layout_weight="4">
+        <TextView
+            android:layout_weight="1.7"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_weight="2"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            >
+            <TextView
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                />
+            <TextView
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                />
+            </LinearLayout>
+        <TextView
+            android:layout_weight="2"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            />
+        <ImageView
+            android:layout_weight="2"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            />
+        <ImageView
+            android:layout_margin="10dp"
+            android:src="@drawable/indraw_album"
+            android:layout_weight="2"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            />
+        <ImageView
+            android:layout_margin="10dp"
+            android:src="@drawable/confirm"
+            android:layout_weight="2"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            />
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="4"></LinearLayout>
+        android:layout_weight="4">
+        <TextView
+            android:textSize="30sp"
+            android:gravity="center"
+            android:text="제목:"
+            android:layout_weight="4"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            />
+        <EditText
+            android:hint="ex)오늘있었던 일"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            />
+        <ImageView
+            android:layout_weight="4"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            />
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
