@@ -1,94 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#ffffff"
+    android:background="#ffffff">
 
-    >
-
-    <LinearLayout
-        android:background="#00ff95"
-        android:orientation="horizontal"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="4">
-        <TextView
-            android:layout_weight="1.7"
+        android:background="#ffffff"
+        android:orientation="vertical"
+
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="#00ff95"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1.7" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:layout_weight="2"
+                android:src="@drawable/photo" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:layout_weight="2"
+                android:src="@drawable/indraw_album" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:layout_weight="2"
+                android:src="@drawable/recycling_bin" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:layout_weight="2"
+                android:src="@drawable/confirm" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="4"
+                android:gravity="center"
+                android:text="제목:"
+                android:textSize="30sp" />
+
+            <EditText
+                android:id="@+id/write_title"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:hint="ex)오늘있었던 일" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#00f535" />
+
+        <EditText
+            android:id="@+id/write_content"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_weight="2"
-            android:layout_height="match_parent"
-            android:layout_width="match_parent"
-            >
-            <TextView
-                android:layout_weight="1"
-                android:layout_height="match_parent"
-                android:layout_width="match_parent"
-                />
-            <TextView
-                android:layout_weight="1"
-                android:layout_height="match_parent"
-                android:layout_width="match_parent"
-                />
-            </LinearLayout>
-        <ImageView
-            android:src="@drawable/photo"
-            android:layout_margin="10dp"
-            android:layout_weight="2"
-            android:layout_height="match_parent"
-            android:layout_width="match_parent"
-            />
-        <ImageView
-            android:layout_margin="10dp"
-            android:src="@drawable/indraw_album"
-            android:layout_weight="2"
-            android:layout_height="match_parent"
-            android:layout_width="match_parent"
-            />
-        <ImageView
-            android:layout_margin="10dp"
-            android:src="@drawable/recycling_bin"
-            android:layout_weight="2"
-            android:layout_height="match_parent"
-            android:layout_width="match_parent"
-            />
-        <ImageView
-            android:layout_margin="10dp"
-            android:src="@drawable/confirm"
-            android:layout_weight="2"
-            android:layout_height="match_parent"
-            android:layout_width="match_parent"
-            />
     </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="4">
-        <TextView
-            android:textSize="30sp"
-            android:gravity="center"
-            android:text="제목:"
-            android:layout_weight="4"
-            android:layout_height="match_parent"
-            android:layout_width="match_parent"
-            />
-        <EditText
-            android:id="@+id/write_title"
-            android:hint="ex)오늘있었던 일"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:layout_width="match_parent"
-            />
-
-    </LinearLayout>
-
-    <EditText
-        android:id="@+id/write_content"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"/>
-</LinearLayout>
+    <ImageView
+        android:id="@+id/sign_image"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:alpha="0.7" />
+</RelativeLayout>
