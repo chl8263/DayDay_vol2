@@ -19,6 +19,9 @@
             android:orientation="horizontal">
 
             <TextView
+                android:gravity="center"
+                android:id="@+id/day"
+                android:textColor="#000"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1.7" />
@@ -30,36 +33,48 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:textColor="#000"
+                    android:gravity="center"
+                    android:id="@+id/year"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1" />
 
                 <TextView
+                    android:textColor="#000"
+                    android:gravity="center"
+                    android:id="@+id/date"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1" />
             </LinearLayout>
 
-            <ImageView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="10dp"
-                android:layout_weight="2"
-                android:src="@drawable/photo" />
+                android:layout_weight="1.5">
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="10dp"
-                android:layout_weight="2"
-                android:src="@drawable/indraw_album" />
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:layout_weight="2"
+                    android:src="@drawable/photo" />
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="10dp"
-                android:layout_weight="2"
-                android:src="@drawable/recycling_bin" />
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:layout_weight="2"
+                    android:src="@drawable/indraw_album" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:layout_weight="2"
+                    android:src="@drawable/recycling_bin" />
+            </LinearLayout>
 
             <ImageView
                 android:layout_width="match_parent"
@@ -70,24 +85,33 @@
         </LinearLayout>
 
         <LinearLayout
+
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="45dp"
             android:gravity="center">
 
             <TextView
+                android:id="@+id/textView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="4"
+                android:ellipsize="marquee"
                 android:gravity="center"
                 android:text="제목:"
-                android:textSize="30sp" />
+                android:textColor="#333333"
+                android:textSize="14sp" />
 
             <EditText
                 android:id="@+id/write_title"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:hint="ex)오늘있었던 일" />
+                android:background="@null"
+                android:hint="ex)오늘있었던 일"
+                android:paddingLeft="5dp"
+                android:textColor="#000"
+                android:textColorHint="#8e8c8c"
+                android:textSize="14dp" />
 
         </LinearLayout>
 
@@ -99,8 +123,11 @@
         <EditText
             android:id="@+id/write_content"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:gravity="top"
+            android:textColor="#000" />
     </LinearLayout>
+
     <ImageView
         android:id="@+id/sign_image"
         android:layout_width="100dp"
