@@ -37,12 +37,11 @@ public class ListFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTextView();
-
-        items = new ArrayList<Re_List_item>();
         manager = new DBManager(getActivity().getApplicationContext(), "WRITE", null, 1);
-        SQLiteDatabase db = manager.getReadableDatabase();
-        if(manager.getTable(yearr + month)) {
-            Cursor cursor = db.rawQuery("select * from '" + yearr + month + "'", null);
+        items = new ArrayList<Re_List_item>();
+        if(manager.getTable(yearr+month)==true) {
+            SQLiteDatabase db = manager.getReadableDatabase();
+            Cursor cursor = db.rawQuery("select * from '" + yearr+month + "'", null);
 
             while (cursor.moveToNext()) {
                 items.add(new Re_List_item(cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), R.drawable.aaa));

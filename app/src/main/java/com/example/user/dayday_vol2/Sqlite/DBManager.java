@@ -52,7 +52,7 @@ public class DBManager extends SQLiteOpenHelper {
     }
     public boolean getTable(String name){
         SQLiteDatabase db = getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT COUNT(*) FROM sqlite_master WHERE type='table' AND name ='"+name+"'" , null);
+        Cursor cursor = db.rawQuery("SELECT name FROM sqlite_master WHERE type='table' AND name ='"+name+"'" , null);
         cursor.moveToFirst();
 
         if(cursor.getCount()>0){
