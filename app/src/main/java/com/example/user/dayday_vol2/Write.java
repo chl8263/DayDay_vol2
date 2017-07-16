@@ -13,21 +13,23 @@ import com.example.user.dayday_vol2.Sqlite.DBManager;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 /**
  * Created by User on 2017-07-10.
  */
 
 public class Write extends AppCompatActivity implements View.OnClickListener{
-    private DBManager manager= new DBManager(getApplicationContext(),"WRITE",null,1);
+    private DBManager manager;
     private TextView year,day,date;
     private EditText write_title, write_content;
     private ImageView confirm,recycling_bin,album,photo;
-    private String yearr,month,month2;
+    private String yearr,month,month2, time,dayy = null;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.write);
+        manager = new DBManager(getApplicationContext(),"WRITE",null,1);
         setEditView();
         setImage();
         setTextView();
@@ -52,16 +54,17 @@ public class Write extends AppCompatActivity implements View.OnClickListener{
         date= (TextView)findViewById(R.id.date);
         day= (TextView)findViewById(R.id.day);
 
-        SimpleDateFormat sdfNow = new SimpleDateFormat("MM");
+        SimpleDateFormat sdfNow = new SimpleDateFormat("MM", Locale.KOREA);
         month = sdfNow.format(new Date(System.currentTimeMillis()));
 
-        SimpleDateFormat sdfNow2 = new SimpleDateFormat("dd");
+        SimpleDateFormat sdfNow2 = new SimpleDateFormat("dd",Locale.KOREA);
         month2 = sdfNow2.format(new Date(System.currentTimeMillis()));
 
-        SimpleDateFormat sdfNow3 = new SimpleDateFormat("yyyy");
+        SimpleDateFormat sdfNow3 = new SimpleDateFormat("yyyy",Locale.KOREA);
         yearr = sdfNow3.format(new Date(System.currentTimeMillis()));
 
-
+        SimpleDateFormat timee = new SimpleDateFormat("HH:mm",Locale.KOREA);
+        time = timee.format(new Date(System.currentTimeMillis()));
 
         day.setText(month+"월"+month2+"일");
         year.setText(yearr);
@@ -69,25 +72,25 @@ public class Write extends AppCompatActivity implements View.OnClickListener{
     }
     private String doDayOfWeek(){
         Calendar cal = Calendar.getInstance();
-        String day = null;
+
         int nWeek = cal.get(Calendar.DAY_OF_WEEK);
         switch (nWeek){
-            case 1:day  ="일요일";break;
-            case 2:day  ="월요일";break;
-            case 3:day  ="화요일";break;
-            case 4:day  ="수요일";break;
-            case 5:day  ="목요일";break;
-            case 6:day  ="금요일";break;
-            case 7:day  ="토요일";break;
+            case 1:dayy  ="일요일";break;
+            case 2:dayy  ="월요일";break;
+            case 3:dayy  ="화요일";break;
+            case 4:dayy  ="수요일";break;
+            case 5:dayy  ="목요일";break;
+            case 6:dayy  ="금요일";break;
+            case 7:dayy  ="토요일";break;
         }
-        return day;
+        return dayy;
     }
     @Override
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.confirm:
                 manager.insertTable(yearr+month);
-                manager.insert();
+                manager.insert(yearr+month,month2,dayy,time,write_title.getText().toString(),write_content.getText().toString());
                 break;
             case R.id.recycling_bin:
                 break;

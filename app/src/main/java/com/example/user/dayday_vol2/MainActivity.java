@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        setFragment();
         setListGridBtn();
         setDrawerLayout();
         setDrawerLayoutButton();
@@ -85,6 +85,13 @@ public class MainActivity extends AppCompatActivity {
                 Log.e("aaaa","aaaa");
             }
         });
+    }
+    private void setFragment(){
+        android.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                ListFragment Listfragment = new ListFragment();
+                transaction.replace(R.id.fragament,Listfragment);
+                transaction.commit();
+
     }
     private void switchFragment(int i){
         android.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
