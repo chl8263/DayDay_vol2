@@ -1,6 +1,9 @@
 package com.example.user.dayday_vol2;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -29,12 +32,12 @@ public class MainActivity extends AppCompatActivity {
     private ListView DrawlistView;
 
 
-
     private ImageView DrawButton;
     private LinearLayout listBtn;
     private LinearLayout gridBtn;
     private LinearLayout fragment;
     private LinearLayout write;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,69 +48,86 @@ public class MainActivity extends AppCompatActivity {
         setDrawerLayoutButton();
         Now_month();
         Write();
+
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction("refresh_main");
+        intentFilter.addAction("picker_select");
+        registerReceiver(receiver, intentFilter);
     }
-    private void Write(){
-        write=(LinearLayout)findViewById(R.id.write);
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        setFragment();
+    }
+
+    private void Write() {
+        write = (LinearLayout) findViewById(R.id.write);
         write.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.e("asd","asdasd");
-                Intent intent = new Intent(getApplicationContext(),Write.class);
+                Log.e("asd", "asdasd");
+                Intent intent = new Intent(getApplicationContext(), Write.class);
                 startActivity(intent);
             }
         });
     }
-    private void Now_month(){
-        now_month = (TextView)findViewById(R.id.now_month);
+
+    private void Now_month() {
+        now_month = (TextView) findViewById(R.id.now_month);
         now_month.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Animation animation = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.btn_anim);
+                Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.btn_anim);
                 now_month.startAnimation(animation);
             }
         });
     }
-    private void setListGridBtn(){
-        fragment = (LinearLayout)findViewById(R.id.fragament);
-        listBtn = (LinearLayout)findViewById(R.id.ListViewBtn);
-        gridBtn = (LinearLayout)findViewById(R.id.GridViewBtn);
+
+    private void setListGridBtn() {
+        fragment = (LinearLayout) findViewById(R.id.fragament);
+        listBtn = (LinearLayout) findViewById(R.id.ListViewBtn);
+        gridBtn = (LinearLayout) findViewById(R.id.GridViewBtn);
         listBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 switchFragment(0);
-                Log.e("asd","asd");
+                Log.e("asd", "asd");
             }
         });
         gridBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 switchFragment(1);
-                Log.e("aaaa","aaaa");
+                Log.e("aaaa", "aaaa");
             }
         });
     }
-    private void setFragment(){
+
+    private void setFragment() {
         android.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                ListFragment Listfragment = new ListFragment();
-                transaction.replace(R.id.fragament,Listfragment);
-                transaction.commit();
+        ListFragment Listfragment = new ListFragment();
+        transaction.replace(R.id.fragament, Listfragment);
+        transaction.commit();
 
     }
-    private void switchFragment(int i){
+
+    private void switchFragment(int i) {
         android.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
-        switch (i){
+        switch (i) {
             case 0:
                 ListFragment Listfragment = new ListFragment();
-                transaction.replace(R.id.fragament,Listfragment);
+                transaction.replace(R.id.fragament, Listfragment);
                 transaction.commit();
                 break;
             case 1:
                 GridFragment Gridfragment = new GridFragment();
-                transaction.replace(R.id.fragament,Gridfragment);
+                transaction.replace(R.id.fragament, Gridfragment);
                 transaction.commit();
                 break;
         }
     }
+
     @Override
     public void onBackPressed() {
         if (drawerLayout.isDrawerOpen(Gravity.START))
@@ -115,6 +135,7 @@ public class MainActivity extends AppCompatActivity {
         else
             super.onBackPressed();
     }
+
     private void setDrawerLayoutButton() {
         DrawButton = (ImageView) findViewById(R.id.drawlayoutMenu);
         DrawButton.setOnClickListener(new View.OnClickListener() {
@@ -124,6 +145,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
     private void setDrawerLayout() {
         drawerLayout = (DrawerLayout) findViewById(R.id.drawlayoutNavigation);
         drawItems = new ArrayList<DrawItem>();
@@ -156,4 +178,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    private BroadcastReceiver receiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (intent.getAction().equals("refresh")){
+                onResume();
+            }
+        }
+    };
 }

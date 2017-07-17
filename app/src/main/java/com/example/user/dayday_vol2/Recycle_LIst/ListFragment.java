@@ -60,7 +60,14 @@ public class ListFragment extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.scrollToPosition(0);
         adapter = new Re_List_Adapter(view.getContext(), items);
+        adapter.setItemClick(new Re_List_Adapter.ItemClick(){
+            @Override
+            public void onClick(View view, int position) {
+
+            }
+        });
         recyclerView.setAdapter(adapter);
+
 
         return view;
     }

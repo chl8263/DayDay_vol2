@@ -21,6 +21,13 @@ public class Re_List_Adapter extends RecyclerView.Adapter<Re_List_Adapter.ViewHo
     private ArrayList<Re_List_item> list;
     private ViewHolder holder;
 
+    private ItemClick click;
+    public interface ItemClick{
+        public void onClick(View view,int position);
+    }
+    public void setItemClick (ItemClick itemClick){
+        this.click = itemClick;
+    }
     public Re_List_Adapter(Context context, ArrayList<Re_List_item> list) {
         this.context = context;
         this.list = list;
@@ -34,7 +41,7 @@ public class Re_List_Adapter extends RecyclerView.Adapter<Re_List_Adapter.ViewHo
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, final int position) {
         holder.date.setText(list.get(position).getDate());
         holder.day.setText(list.get(position).getDay());
         holder.time.setText(list.get(position).getTime());
@@ -42,6 +49,14 @@ public class Re_List_Adapter extends RecyclerView.Adapter<Re_List_Adapter.ViewHo
         holder.content.setText(list.get(position).getContent());
         holder.image.setImageResource(list.get(position).getImage());
 
+        holder.itemView.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                if(click != null){
+                    click.onClick(v,position);
+                }
+            }
+        });
     }
 
     @Override

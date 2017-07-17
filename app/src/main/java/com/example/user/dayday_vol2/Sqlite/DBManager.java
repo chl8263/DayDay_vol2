@@ -25,7 +25,7 @@ public class DBManager extends SQLiteOpenHelper {
     }
     public void insertTable(String name){
         SQLiteDatabase db = getWritableDatabase();
-        db.execSQL("CREATE TABLE IF NOT EXISTS '"+name+"' (date TEXT, dat TEXT , time TEXT , title TEXT, content TEXT);");
+        db.execSQL("CREATE TABLE IF NOT EXISTS '"+name+"' (date TEXT, day TEXT , time TEXT , title TEXT, content TEXT);");
         db.close();
     }
     public void insert(String name,String date,String day,String time,String title,String content){
@@ -60,6 +60,10 @@ public class DBManager extends SQLiteOpenHelper {
         }else{
             return false;
         }
+    }
+    public void delectDB(String name,String date,String day,String time){
+        SQLiteDatabase db = getWritableDatabase();
+        db.execSQL("DELETE FROM '"+name+"' WHERE date = '"+date+"' and day = '"+day+"' and time = '"+time+"'");
     }
 
 }

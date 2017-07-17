@@ -12,16 +12,13 @@ import android.widget.TextView;
 
 import com.example.user.dayday_vol2.Sqlite.DBManager;
 
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
 
 /**
- * Created by User on 2017-07-10.
+ * Created by User on 2017-07-17.
  */
 
-public class Write extends AppCompatActivity implements View.OnClickListener{
+public class Write_Existence extends AppCompatActivity implements View.OnClickListener{
     private DBManager manager;
     private TextView year,day,date;
     private EditText write_title, write_content;
@@ -56,7 +53,7 @@ public class Write extends AppCompatActivity implements View.OnClickListener{
         date= (TextView)findViewById(R.id.date);
         day= (TextView)findViewById(R.id.day);
 
-        SimpleDateFormat sdfNow = new SimpleDateFormat("MM", Locale.KOREA);
+        /*SimpleDateFormat sdfNow = new SimpleDateFormat("MM", Locale.KOREA);
         month = sdfNow.format(new Date(System.currentTimeMillis()));
 
         SimpleDateFormat sdfNow2 = new SimpleDateFormat("dd",Locale.KOREA);
@@ -66,9 +63,9 @@ public class Write extends AppCompatActivity implements View.OnClickListener{
         yearr = sdfNow3.format(new Date(System.currentTimeMillis()));
 
         SimpleDateFormat timee = new SimpleDateFormat("HH:mm",Locale.KOREA);
-        time = timee.format(new Date(System.currentTimeMillis()));
+        time = timee.format(new Date(System.currentTimeMillis()));*/
 
-        day.setText(month+"월"+month2+"일");
+        day.setText(+"월"+month2+"일");
         year.setText(yearr);
         date.setText(dayy);
     }
@@ -110,25 +107,3 @@ public class Write extends AppCompatActivity implements View.OnClickListener{
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
