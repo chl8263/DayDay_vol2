@@ -65,7 +65,7 @@ public class Write_Existence extends AppCompatActivity implements View.OnClickLi
         SimpleDateFormat timee = new SimpleDateFormat("HH:mm",Locale.KOREA);
         time = timee.format(new Date(System.currentTimeMillis()));*/
 
-        day.setText(+"월"+month2+"일");
+        day.setText(month+"월"+month2+"일");
         year.setText(yearr);
         date.setText(dayy);
     }
